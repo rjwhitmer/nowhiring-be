@@ -14,6 +14,7 @@ RSpec.configure do |config|
   # By default, the operations defined in spec files are added to the first
   # document below. You can override this behavior by adding a openapi_spec tag to the
   # the root example_group in your specs, e.g. describe '...', openapi_spec: 'v2/swagger.json'
+  # Run this command when you need to generate documents - SWAGGER_DRY_RUN=0 RAILS_ENV=test ./bin/rails rswag
   config.openapi_specs = {
     'v1/swagger.yaml' => {
       openapi: '3.0.1',
