@@ -1,0 +1,125 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/jobs":
+    get:
+      summary: list jobs
+      tags:
+      - Jobs
+      description: List all the jobs
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                test_example:
+                  value: []
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/job"
+    post:
+      summary: create job
+      tags:
+      - Jobs
+      description: Create a new job
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                test_example:
+                  value:
+                    id: 1
+                    description: Rails developer position
+                    ending_base_salary_range:
+                    expected_start_date:
+                    hourly_wage:
+                    is_active:
+                    is_hourly_wage:
+                    starting_base_salary_range: 100
+                    title: Rails Dev
+              schema:
+                "$ref": "#/components/schemas/job"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/job"
+  "/api/jobs/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: The ID for the job
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show job
+      description: Get the details for a specific Job
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                test_example:
+                  value:
+                    id: 1
+                    description: This is a test for GET route for a specific job
+                    ending_base_salary_range:
+                    expected_start_date:
+                    hourly_wage:
+                    is_active:
+                    is_hourly_wage:
+                    starting_base_salary_range: 120
+                    title: Get Job Test
+              schema:
+                "$ref": "#/components/schemas/job"
+        '404':
+          description: not found
+          content:
+            application/json:
+              examples:
+                test_example:
+                  value:
+                    error: Job not found
+              schema:
+                "$ref": "#/components/schemas/not_found"
+components:
+  schemas:
+    not_found:
+      type: object
+      properties:
+        message:
+          type: string
+    job:
+      type: object
+      required:
+      - title
+      - description
+      - starting_base_salary_range
+      properties:
+        title:
+          type: string
+          exapmle: Rails Engineer
+          description: Title of the job posting
+        description:
+          type: string
+          example: This is a Ruby on Rails engineering job
+          description: Description of the job duties
+        starting_base_salary_range:
+          type: integer
+          example: 100
+          description: Starting base salary for the job posting. Must be postive.
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
