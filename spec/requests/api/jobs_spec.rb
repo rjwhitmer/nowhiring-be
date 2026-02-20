@@ -1,9 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/jobs', type: :request do
-
   path '/api/jobs' do
-
     get('list jobs') do
       tags 'Jobs'
       consumes 'application/json'
@@ -49,7 +47,7 @@ RSpec.describe 'api/jobs', type: :request do
             starting_base_salary_range: 100
           }
         }
-        
+
         # binding.pry
         after do |example|
           content = example.metadata[:response][:content] || {}

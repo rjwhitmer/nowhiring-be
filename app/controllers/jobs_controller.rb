@@ -16,7 +16,6 @@ class JobsController < ApplicationController
   # POST /jobs
   def create
     @job = Job.new(job_params)
-
     if @job.save
       render json: @job, status: :created, location: @job
     else
@@ -46,6 +45,6 @@ class JobsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_params
-      params.fetch(:job, {})
+      params.require(:job).permit(:title, :description, :starting_base_salary_range, :ending_base_salary_range, :hourly_wage, :is_hourly_wage, :is_active, :expected_start_date)
     end
 end

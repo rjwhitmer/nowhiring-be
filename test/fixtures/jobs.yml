@@ -4,8 +4,16 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one: {
+  title: "Test 1",
+  description: "Test 1",
+  starting_base_salary_range: 100
+}
 # column: value
 #
-two: {}
+two: {
+  title: "Test 2",
+  description: "Test 2",
+  starting_base_salary_range: 100
+}
 # column: value

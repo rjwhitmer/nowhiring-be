@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  mount Rswag::Ui::Engine => '/api-docs'
-  mount Rswag::Api::Engine => '/api-docs'
+  mount Rswag::Ui::Engine => "/api-docs"
+  mount Rswag::Api::Engine => "/api-docs"
   resources :companies
   resources :skills
   resources :jobs
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # API documentation routing
-  namespace :api do 
+  namespace :api do
     resources :jobs, :jobs, only: %i[index show create]
   end
 

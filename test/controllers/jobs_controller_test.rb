@@ -12,7 +12,7 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create job" do
     assert_difference("Job.count") do
-      post jobs_url, params: { job: {} }, as: :json
+      post jobs_url, params: { job: { title: "Create Test", description: "Create Test", starting_base_salary_range: 100 } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update job" do
-    patch job_url(@job), params: { job: {} }, as: :json
+    patch job_url(@job), params: { job: { title: "Update Test", description: "Update Test", starting_base_salary_range: 200 } }, as: :json
     assert_response :success
   end
 

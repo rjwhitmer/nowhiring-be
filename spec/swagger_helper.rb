@@ -49,9 +49,9 @@ RSpec.configure do |config|
                 example: 100,
                 description: "Starting base salary for the job posting. Must be postive."
               }
-            },
-          },
-        },
+            }
+          }
+        }
       },
       servers: [
         {
