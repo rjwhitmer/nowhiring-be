@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  post "sign_in", to: "sessions#create"
+  post "sign_up", to: "registrations#create"
+  resources :sessions, only: [:index, :show, :destroy]
+  resource  :password, only: [:edit, :update]
+  namespace :identity do
+    resource :email,              only: [:edit, :update]
+    resource :email_verification, only: [:show, :create]
+    resource :password_reset,     only: [:new, :edit, :create, :update]
+  end
+  resources :company_profiles
+  resources :user_profiles
   resource :session
   resources :passwords, param: :token
   mount Rswag::Ui::Engine => "/api-docs"
@@ -6,10 +17,16 @@ Rails.application.routes.draw do
   resources :companies
   resources :skills
   resources :jobs
+  resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # API documentation routing
   namespace :api do
     resources :jobs, :jobs, only: %i[index show create]
+    namespace :v1 do
+      defaults format: :json do
+        get "home/index", to: "home#index"
+      end
+    end
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

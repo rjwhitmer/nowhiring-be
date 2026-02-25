@@ -55,3 +55,7 @@ end
 gem "rack-cors", "~> 3.0"
 
 gem "pry", "~> 0.16.0"
+
+gem "authentication-zero", "~> 4.0"
+
+gem "dotenv-rails", "~> 3.2"
