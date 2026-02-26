@@ -1,20 +1,12 @@
 class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
-  before_action :set_current_request_details
-  before_action :authenticate
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  private
-    def authenticate
-      if session_record = authenticate_with_http_token { |token, _| Session.find_signed(token) }
-        Current.session = session_record
-      else
-        request_http_token_authentication
-      end
-    end
+  protected
 
-    def set_current_request_details
-      Current.user_agent = request.user_agent
-      Current.ip_address = request.ip
-    end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name])
+  end    
 end

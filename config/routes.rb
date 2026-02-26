@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users, path: '', path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    registration: 'signup'
+  }, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   post "sign_in", to: "sessions#create"
   post "sign_up", to: "registrations#create"
   resources :sessions, only: [:index, :show, :destroy]

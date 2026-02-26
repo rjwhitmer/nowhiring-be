@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: %i[ show update destroy ]
-  skip_before_action :authenticate_user!, only: %i[index]
+  before_action :authenticate_user!
 
   # GET /jobs
   def index

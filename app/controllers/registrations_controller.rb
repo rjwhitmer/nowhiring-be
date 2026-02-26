@@ -1,6 +1,4 @@
 class RegistrationsController < ApplicationController
-  skip_before_action :authenticate
-
   def create
     @user = User.new(user_params)
 
