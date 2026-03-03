@@ -4,4 +4,5 @@ lazaro_nixon:
   email: lazaronixon@hotmail.com
   encrypted_password: <%= BCrypt::Password.create("Secret1*3*5*") %>
   verified: true
-  jti: lkajdsflkjgloiawjpo3i4jalksdjg
+  jti: ''
+  password_salt: ''

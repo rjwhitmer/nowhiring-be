@@ -11,7 +11,6 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    binding.pry
     get jobs_url, as: :json
     assert_response :success
   end
