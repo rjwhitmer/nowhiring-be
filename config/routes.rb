@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :users, path: '', path_names: {
-    sign_in: 'login',
-    sign_out: 'logout',
-    registration: 'signup'
+  devise_for :users, path: "", path_names: {
+    sign_in: "login",
+    sign_out: "logout",
+    registration: "signup"
   }, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    sessions: "users/sessions",
+    registrations: "users/registrations"
   }
   post "sign_in", to: "sessions#create"
   post "sign_up", to: "registrations#create"
-  resources :sessions, only: [:index, :show, :destroy]
-  resource  :password, only: [:edit, :update]
+  resources :sessions, only: [ :index, :show, :destroy ]
+  resource  :password, only: [ :edit, :update ]
   namespace :identity do
-    resource :email,              only: [:edit, :update]
-    resource :email_verification, only: [:show, :create]
-    resource :password_reset,     only: [:new, :edit, :create, :update]
+    resource :email,              only: [ :edit, :update ]
+    resource :email_verification, only: [ :show, :create ]
+    resource :password_reset,     only: [ :new, :edit, :create, :update ]
   end
   resources :company_profiles
   resources :user_profiles

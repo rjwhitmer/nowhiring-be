@@ -55,8 +55,8 @@ end
 gem "rack-cors", "~> 3.0"
 
 gem "pry", "~> 0.16.0"
-gem 'devise'
-gem 'devise-jwt'
-gem 'jsonapi-serializer'
+gem "devise"
+gem "devise-jwt"
+gem "jsonapi-serializer"
 
 gem "dotenv-rails", "~> 3.2"

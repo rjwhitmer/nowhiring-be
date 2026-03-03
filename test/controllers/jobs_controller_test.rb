@@ -3,9 +3,15 @@ require "test_helper"
 class JobsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @job = jobs(:one)
+    @user, @token = sign_in_as(users(:lazaro_nixon))
+  end
+
+  def default_headers
+    { "Authorization" => "Bearer #{@token}" }
   end
 
   test "should get index" do
+    binding.pry
     get jobs_url, as: :json
     assert_response :success
   end
