@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       headers['Authorization'] = @token
 
       render json: {
-        status: { code: 200, message: 'Signed up successfully.', token: @token, data: UserSerializer.new(resource).serializable_hash[:data][:attributes] }
+        status: { code: 201, message: 'Signed up successfully.', token: @token, data: UserSerializer.new(resource).serializable_hash[:data][:attributes] }
       }
     else
       render json: {
